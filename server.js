@@ -627,7 +627,8 @@ function getSession(request) {
 }
 
 function setSessionCookie(request, response, sessionId, maxAge) {
-    const secure = process.env.NODE_ENV === "production" || request.socket.encrypted;
+    const secure = process.env.SDONATE_COOKIE_SECURE !== "false" &&
+        (process.env.NODE_ENV === "production" || request.socket.encrypted);
     response.setHeader("Set-Cookie", `sdonate_session=${encodeURIComponent(sessionId)}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${maxAge}${secure ? "; Secure" : ""}`);
 }
 
