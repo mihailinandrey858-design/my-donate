@@ -1,0 +1,123 @@
+.slider-config {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.slider-config-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+
+.slider-config-head span {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+}
+
+.slider-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.slider-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+}
+
+.slider-chip:has(input:checked) {
+    border-color: #2f9bff;
+    background: rgba(47, 155, 255, 0.14);
+}
+
+.slider-max-field {
+    display: grid;
+    gap: 6px;
+}
+
+.slider-max-field input {
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: #101119;
+    color: inherit;
+    font: inherit;
+}
+
+.slider-max-field small {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.currency-slider {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.currency-slider-heading h3 {
+    margin: 4px 0 0;
+}
+
+.currency-slider-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.currency-slider-tabs button {
+    padding: 7px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.currency-slider-tabs button.active {
+    border-color: var(--store-accent, #7866ff);
+    background: var(--store-accent-soft, rgba(120, 102, 255, 0.15));
+}
+
+.currency-slider input[type="range"] {
+    width: 100%;
+    accent-color: var(--store-accent, #7866ff);
+}
+
+.currency-slider-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+}
+
+.currency-slider-summary span {
+    margin-left: auto;
+    font-weight: 700;
+}
+
+.currency-slider-buy {
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--store-accent, #7866ff);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+

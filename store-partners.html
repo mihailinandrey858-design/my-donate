@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080910">
+    <meta name="description" content="Партнёры магазина SDonate.">
+    <title>Партнёры — SDonate</title>
+    <link rel="icon" type="image/png" href="./img/Серебристый куб с эмблемой SD.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/store-pages.css">
+    <link rel="stylesheet" href="./css/store-partners.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="./index.html"><img src="./img/Серебристый куб с эмблемой SD.png" alt=""><span>SDonate</span></a>
+        <nav class="main-nav" aria-label="Главная навигация">
+            <a class="nav-link" href="./dashboard.html"><img class="nav-icon" src="./img/house.png" alt="">Главная</a>
+            <a class="nav-link" href="./finance.html"><img class="nav-icon" src="./img/hand-coins.png" alt="">Финансы</a>
+            <a class="nav-link active" href="./shops.html"><img class="nav-icon" src="./img/shopping-basket.png" alt="">Магазины</a>
+            <a class="nav-link" href="./settings.html"><img class="nav-icon" src="./img/bolt.png" alt="">Настройки</a>
+        </nav>
+        <div class="top-actions">
+            <a class="help-link" href="https://t.me/Sdonat1" target="_blank" rel="noopener noreferrer"><img class="nav-icon" src="./img/message-square-more.png" alt=""> Помощь</a>
+            <div class="account-menu"><span class="account-avatar" id="account-avatar">S</span><span class="account-name"><b id="account-name">Игрок</b><small>Аккаунт</small></span><button class="logout-button" id="logout-button" type="button">Выйти</button></div>
+        </div>
+    </header>
+
+    <main class="dashboard-content store-pages-content">
+        <div class="pages-demo-banner"><span class="pages-demo-icon" aria-hidden="true">i</span><span><b>Права сохраняются, но пока не применяются</b> — приглашение по почте и вход сотрудника в панель магазина ещё не подключены.</span><a id="back-to-shop" href="./shops.html">← К магазину</a></div>
+        <section class="pages-heading">
+            <div><p class="eyebrow">МАГАЗИН <span>/</span> ПАРТНЁРЫ</p><h1>Партнёры</h1><p id="partners-shop-caption">Добавляйте партнёров и выбирайте, что им разрешено делать в магазине.</p></div>
+        </section>
+
+        <section class="pages-editor-panel">
+            <form id="partner-form" class="pages-form" novalidate>
+                <header class="pages-form-heading">
+                    <div class="pages-title-wrap">
+                        <button class="pages-back-button" id="cancel-edit" type="button" aria-label="Сбросить форму" hidden>←</button>
+                        <div><p class="eyebrow">КОМАНДА МАГАЗИНА</p><h2 id="partner-form-title">Добавление партнёра</h2></div>
+                    </div>
+                </header>
+                <p class="pages-form-intro">Укажите отображаемую роль партнёра, долю и email партнёра в системе SDonate.</p>
+
+                <div class="partner-layout">
+                    <div class="partner-main-fields">
+                        <label class="pages-field"><span>Занимаемая должность <b>*</b></span><input name="position" type="text" maxlength="60" placeholder="Технический разработчик" required></label>
+                        <label class="pages-field"><span>Доля партнёра (от 0 до 100%) <b>*</b></span><span class="partner-percent"><input name="share" type="number" min="0" max="100" step="0.01" value="0" required><em>%</em></span></label>
+                        <label class="pages-field"><span>Email партнёра <b>*</b></span><input name="email" type="email" maxlength="120" placeholder="partner@domain.com" autocomplete="off" required></label>
+                        <label class="partner-switch-row"><input class="partner-switch" id="split-servers" name="splitServers" type="checkbox"><span>Делить прибыль на определённых серверах</span></label>
+                        <fieldset class="partner-servers" id="partner-servers" hidden><legend>Серверы для раздела прибыли</legend><div id="partner-servers-list"></div><p id="partner-servers-empty" hidden>Серверов пока нет. Добавьте их в разделе «Серверы».</p></fieldset>
+                    </div>
+
+                    <div class="partner-permissions">
+                        <div class="partner-tabs" id="permission-tabs" role="tablist" aria-label="Разделы прав доступа"></div>
+                        <section class="partner-permission-panel" id="permission-panel" role="tabpanel" aria-live="polite"></section>
+                    </div>
+                </div>
+
+                <p class="pages-form-feedback" id="partner-feedback" role="alert" hidden></p>
+                <div class="pages-form-actions"><button class="pages-cancel-button" id="reset-partner-form" type="button">Очистить</button><button class="pages-save-button" type="submit"><span aria-hidden="true">＋</span> <span id="partner-save-label">Добавить</span></button></div>
+            </form>
+        </section>
+
+        <section class="pages-list-section">
+            <div class="pages-list-heading"><div><h2>Партнёры магазина</h2><p>Сумма долей всех партнёров не может превышать 100%.</p></div><span class="pages-count" id="partners-count">0 партнёров</span></div>
+            <div class="pages-list" id="partners-list"></div>
+            <p class="pages-empty" id="partners-empty">Партнёров пока нет. Добавьте первого выше.</p>
+        </section>
+    </main>
+
+    <dialog class="pages-delete-dialog" id="partner-delete-dialog">
+        <span aria-hidden="true">!</span><h2>Удалить партнёра?</h2><p><b id="partner-delete-title"></b> будет удалён из магазина, а привязки к купонам останутся без процента.</p>
+        <div><button class="pages-cancel-button" id="cancel-partner-delete" type="button">Отмена</button><button class="pages-delete-button" id="confirm-partner-delete" type="button">Удалить</button></div>
+    </dialog>
+    <div class="pages-toast" id="partners-toast" role="status" aria-live="polite" hidden></div>
+    <script src="./auth-session.js"></script>
+    <script src="./demo-shop-storage.js"></script>
+    <script src="./store-partners.js"></script>
+    <script src="./telegram-promo.js"></script>
+</body>
+</html>

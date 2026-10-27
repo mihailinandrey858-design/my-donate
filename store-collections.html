@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080910">
+    <meta name="description" content="Подборки товаров магазина SDonate.">
+    <title>Подборки — SDonate</title>
+    <link rel="icon" type="image/png" href="./img/Серебристый куб с эмблемой SD.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/store-pages.css">
+    <link rel="stylesheet" href="./css/store-collections.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="./index.html"><img src="./img/Серебристый куб с эмблемой SD.png" alt=""><span>SDonate</span></a>
+        <nav class="main-nav" aria-label="Главная навигация">
+            <a class="nav-link" href="./dashboard.html"><img class="nav-icon" src="./img/house.png" alt="">Главная</a>
+            <a class="nav-link" href="./finance.html"><img class="nav-icon" src="./img/hand-coins.png" alt="">Финансы</a>
+            <a class="nav-link active" href="./shops.html"><img class="nav-icon" src="./img/shopping-basket.png" alt="">Магазины</a>
+            <a class="nav-link" href="./settings.html"><img class="nav-icon" src="./img/bolt.png" alt="">Настройки</a>
+        </nav>
+        <div class="top-actions">
+            <a class="help-link" href="https://t.me/Sdonat1" target="_blank" rel="noopener noreferrer"><img class="nav-icon" src="./img/message-square-more.png" alt=""> Помощь</a>
+            <div class="account-menu"><span class="account-avatar" id="account-avatar">S</span><span class="account-name"><b id="account-name">Игрок</b><small>Аккаунт</small></span><button class="logout-button" id="logout-button" type="button">Выйти</button></div>
+        </div>
+    </header>
+
+    <main class="dashboard-content store-pages-content">
+        <div class="pages-demo-banner"><span class="pages-demo-icon" aria-hidden="true">i</span><span><b>Демо-подборки</b> — пока сохраняются в браузере.</span><a id="back-to-shop" href="./shops.html">← К магазину</a></div>
+        <section class="pages-heading">
+            <div><p class="eyebrow">МАГАЗИН <span>/</span> КОНТЕНТ</p><h1>Подборки</h1><p id="collections-shop-caption">Группируйте товары магазина в подборки.</p></div>
+        </section>
+
+        <section class="pages-editor-panel">
+            <form id="collection-form" class="pages-form" novalidate>
+                <header class="pages-form-heading">
+                    <div class="pages-title-wrap">
+                        <button class="pages-back-button" id="cancel-edit" type="button" aria-label="Сбросить форму" hidden>←</button>
+                        <div><p class="eyebrow">КОНТЕНТ МАГАЗИНА</p><h2 id="collection-form-title">Добавление подборки</h2></div>
+                    </div>
+                </header>
+                <p class="pages-form-intro">Укажите название и необходимые товары. При желании можно поставить картинку.</p>
+
+                <div class="collection-layout">
+                    <div class="collection-main">
+                        <label class="pages-field"><span>Название подборки <b>*</b></span><input name="name" type="text" maxlength="80" placeholder="Укажите название" required></label>
+                        <label class="pages-field"><span>Сервер</span><select name="server" id="collection-server"></select></label>
+                        <div class="pages-field">
+                            <span>Изображение</span>
+                            <div class="collection-image-box" id="collection-image-box">
+                                <label class="collection-image-drop" for="collection-image-input" id="collection-image-placeholder" aria-label="Выбрать изображение">▣</label>
+                                <img id="collection-image-preview" alt="Изображение подборки" hidden>
+                                <button class="pages-cancel-button collection-image-remove" id="collection-image-remove" type="button" hidden>Убрать</button>
+                            </div>
+                            <input id="collection-image-input" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+                        </div>
+                    </div>
+                    <div class="collection-products" id="collection-products" role="group" aria-label="Товары подборки"></div>
+                </div>
+
+                <p class="pages-form-feedback" id="collection-feedback" role="alert" hidden></p>
+                <div class="pages-form-actions"><button class="pages-cancel-button" id="reset-collection-form" type="button">Очистить</button><button class="pages-save-button" type="submit"><span aria-hidden="true">＋</span> <span id="collection-save-label">Добавить</span></button></div>
+            </form>
+        </section>
+
+        <section class="pages-list-section">
+            <div class="pages-list-heading"><div><h2>Подборки магазина</h2><p>Товары в подборке выбираются из каталога магазина.</p></div><span class="pages-count" id="collections-count">0 подборок</span></div>
+            <div class="pages-list" id="collections-list"></div>
+            <p class="pages-empty" id="collections-empty">Подборок пока нет. Создайте первую выше.</p>
+        </section>
+    </main>
+
+    <dialog class="pages-delete-dialog" id="collection-delete-dialog">
+        <span aria-hidden="true">!</span><h2>Удалить подборку?</h2><p>Подборка <b id="collection-delete-title"></b> будет удалена. Товары останутся в магазине.</p>
+        <div><button class="pages-cancel-button" id="cancel-collection-delete" type="button">Отмена</button><button class="pages-delete-button" id="confirm-collection-delete" type="button">Удалить</button></div>
+    </dialog>
+    <div class="pages-toast" id="collections-toast" role="status" aria-live="polite" hidden></div>
+    <script src="./auth-session.js"></script>
+    <script src="./demo-shop-storage.js"></script>
+    <script src="./store-collections.js"></script>
+    <script src="./telegram-promo.js"></script>
+</body>
+</html>

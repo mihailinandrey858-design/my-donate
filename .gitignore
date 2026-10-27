@@ -1,0 +1,13 @@
+.env*
+*.neon
+node_modules/
+**/node_modules/
+**/target/
+/downloads/*.jar
+*.log
+*.err
+/data/users.json
+/trybit-*.txt
+/.vscode/mcp.json
+/SDonate/
+/sddonate/

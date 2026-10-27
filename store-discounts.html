@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080910">
+    <meta name="description" content="Массовые скидки магазина SDonate.">
+    <title>Массовые скидки — SDonate</title>
+    <link rel="icon" type="image/png" href="./img/Серебристый куб с эмблемой SD.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/store-pages.css">
+    <link rel="stylesheet" href="./css/store-collections.css">
+    <link rel="stylesheet" href="./css/store-discounts.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="./index.html"><img src="./img/Серебристый куб с эмблемой SD.png" alt=""><span>SDonate</span></a>
+        <nav class="main-nav" aria-label="Главная навигация">
+            <a class="nav-link" href="./dashboard.html"><img class="nav-icon" src="./img/house.png" alt="">Главная</a>
+            <a class="nav-link" href="./finance.html"><img class="nav-icon" src="./img/hand-coins.png" alt="">Финансы</a>
+            <a class="nav-link active" href="./shops.html"><img class="nav-icon" src="./img/shopping-basket.png" alt="">Магазины</a>
+            <a class="nav-link" href="./settings.html"><img class="nav-icon" src="./img/bolt.png" alt="">Настройки</a>
+        </nav>
+        <div class="top-actions">
+            <div class="account-menu"><span class="account-avatar" id="account-avatar">S</span><span class="account-name"><b id="account-name">Игрок</b><small>Аккаунт</small></span><button class="logout-button" id="logout-button" type="button">Выйти</button></div>
+        </div>
+    </header>
+
+    <main class="dashboard-content store-pages-content">
+        <section class="pages-heading discounts-heading">
+            <div class="discounts-title">
+                <a class="pages-back-button" id="back-to-shop" href="./shops.html" aria-label="К магазину">←</a>
+                <div><h1><span id="discounts-shop-name">Магазин</span> — <em>массовые скидки</em></h1><p>Управляйте массовыми скидками вашего магазина</p></div>
+            </div>
+            <button class="pages-save-button" id="open-discount-form" type="button"><span aria-hidden="true">＋</span> Добавить скидку</button>
+        </section>
+
+        <section class="pages-list-section">
+            <div class="discount-grid" id="discounts-list"></div>
+            <p class="pages-empty" id="discounts-empty">Скидок пока нет. Нажмите «Добавить скидку».</p>
+        </section>
+
+        <section class="pages-editor-panel" id="discount-panel" hidden>
+            <form id="discount-form" class="pages-form" novalidate>
+                <header class="pages-form-heading">
+                    <div class="pages-title-wrap">
+                        <button class="pages-back-button" id="close-discount-form" type="button" aria-label="Закрыть форму">←</button>
+                        <div><h2 id="discount-form-title">Добавление массовой скидки</h2></div>
+                    </div>
+                </header>
+                <p class="pages-form-intro">Укажите название и процент скидки. При желании можно указать время начала или истечения.</p>
+
+                <div class="collection-layout">
+                    <div class="collection-main">
+                        <label class="pages-field"><span>Название скидки <b>*</b></span><input name="name" type="text" maxlength="80" placeholder="Летние скидки" required></label>
+                        <label class="pages-field"><span>Процент скидки <b>*</b></span><input name="percent" type="number" min="1" max="99" step="1" value="10" required></label>
+                        <div class="discount-dates">
+                            <label class="pages-field"><span>Начало скидки</span><input name="startAt" type="date"></label>
+                            <label class="pages-field"><span>Окончание скидки</span><input name="endAt" type="date"></label>
+                        </div>
+                    </div>
+                    <div class="collection-products" id="discount-products" role="group" aria-label="Товары со скидкой"></div>
+                </div>
+
+                <p class="pages-form-feedback" id="discount-feedback" role="alert" hidden></p>
+                <div class="pages-form-actions"><button class="pages-save-button" type="submit"><span id="discount-save-label">Добавить</span></button></div>
+            </form>
+        </section>
+    </main>
+
+    <dialog class="pages-delete-dialog" id="discount-delete-dialog">
+        <span aria-hidden="true">!</span><h2>Удалить скидку?</h2><p>Скидка <b id="discount-delete-title"></b> будет удалена, цены вернутся к обычным.</p>
+        <div><button class="pages-cancel-button" id="cancel-discount-delete" type="button">Отмена</button><button class="pages-delete-button" id="confirm-discount-delete" type="button">Удалить</button></div>
+    </dialog>
+    <div class="pages-toast" id="discounts-toast" role="status" aria-live="polite" hidden></div>
+    <script src="./auth-session.js"></script>
+    <script src="./demo-shop-storage.js"></script>
+    <script src="./store-discounts.js"></script>
+    <script src="./telegram-promo.js"></script>
+</body>
+</html>

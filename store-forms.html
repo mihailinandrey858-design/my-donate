@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080910">
+    <meta name="description" content="Формы заявок магазина SDonate.">
+    <title>Формы — SDonate</title>
+    <link rel="icon" type="image/png" href="./img/Серебристый куб с эмблемой SD.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/store-pages.css">
+    <link rel="stylesheet" href="./css/store-forms.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="./index.html"><img src="./img/Серебристый куб с эмблемой SD.png" alt=""><span>SDonate</span></a>
+        <nav class="main-nav" aria-label="Главная навигация">
+            <a class="nav-link" href="./dashboard.html"><img class="nav-icon" src="./img/house.png" alt="">Главная</a>
+            <a class="nav-link" href="./finance.html"><img class="nav-icon" src="./img/hand-coins.png" alt="">Финансы</a>
+            <a class="nav-link active" href="./shops.html"><img class="nav-icon" src="./img/shopping-basket.png" alt="">Магазины</a>
+            <a class="nav-link" href="./settings.html"><img class="nav-icon" src="./img/bolt.png" alt="">Настройки</a>
+        </nav>
+        <div class="top-actions">
+            <a class="help-link" href="https://t.me/Sdonat1" target="_blank" rel="noopener noreferrer"><img class="nav-icon" src="./img/message-square-more.png" alt=""> Помощь</a>
+            <div class="account-menu"><span class="account-avatar" id="account-avatar">S</span><span class="account-name"><b id="account-name">Игрок</b><small>Аккаунт</small></span><button class="logout-button" id="logout-button" type="button">Выйти</button></div>
+        </div>
+    </header>
+
+    <main class="dashboard-content store-pages-content">
+        <div class="pages-demo-banner"><span class="pages-demo-icon" aria-hidden="true">i</span><span><b>Демо-формы</b> — формы и заявки пока хранятся в браузере.</span><a id="back-to-shop" href="./shops.html">← К магазину</a></div>
+        <section class="pages-heading">
+            <div><p class="eyebrow">МАГАЗИН <span>/</span> КОНТЕНТ</p><h1>Формы</h1><p id="forms-shop-caption">Создавайте формы заявок: хелпер, модератор, TikTok, YouTube.</p></div>
+        </section>
+
+        <section class="pages-editor-panel">
+            <form id="form-builder" class="pages-form" novalidate>
+                <header class="pages-form-heading">
+                    <div class="pages-title-wrap">
+                        <button class="pages-back-button" id="cancel-edit" type="button" aria-label="Сбросить форму" hidden>←</button>
+                        <div><p class="eyebrow">КОНСТРУКТОР</p><h2 id="builder-title">Создание формы</h2></div>
+                    </div>
+                </header>
+                <p class="pages-form-intro">Выберите тип заявки, настройте описание, кнопку и вопросы. Форма появится на витрине магазина.</p>
+
+                <div class="pages-meta-fields">
+                    <label class="pages-field"><span>Тип заявки</span><select name="type" id="form-type"></select></label>
+                    <label class="pages-field"><span>Название формы <b>*</b></span><input name="title" type="text" maxlength="80" placeholder="Заявка на хелпера" required></label>
+                    <label class="pages-field"><span>Описание</span><input name="description" type="text" maxlength="240" placeholder="Расскажите, кого вы ищете и что требуется"></label>
+                    <label class="pages-field"><span>Текст кнопки <b>*</b></span><input name="buttonText" type="text" maxlength="30" placeholder="Подать заявку" required></label>
+                </div>
+
+                <div class="forms-questions-head"><h3>Вопросы</h3><button class="pages-cancel-button" id="add-question" type="button">＋ Добавить вопрос</button></div>
+                <div class="forms-questions" id="forms-questions"></div>
+
+                <label class="forms-enabled"><input name="enabled" type="checkbox" checked> Показывать форму на витрине</label>
+                <p class="pages-form-feedback" id="builder-feedback" role="alert" hidden></p>
+                <div class="pages-form-actions"><button class="pages-cancel-button" id="reset-builder" type="button">Очистить</button><button class="pages-save-button" type="submit"><span aria-hidden="true">＋</span> <span id="builder-save-label">Создать форму</span></button></div>
+            </form>
+        </section>
+
+        <section class="pages-list-section">
+            <div class="pages-list-heading"><div><h2>Формы магазина</h2><p>Кнопки форм отображаются на витрине в разделе «Заявки».</p></div><span class="pages-count" id="forms-count">0 форм</span></div>
+            <div class="pages-list" id="forms-list"></div>
+            <p class="pages-empty" id="forms-empty">Форм пока нет. Создайте первую выше.</p>
+        </section>
+
+        <section class="pages-list-section">
+            <div class="pages-list-heading"><div><h2>Полученные заявки</h2><p>Заявки, отправленные игроками через формы магазина.</p></div><span class="pages-count" id="submissions-count">0 заявок</span></div>
+            <div class="forms-submissions" id="submissions-list"></div>
+            <p class="pages-empty" id="submissions-empty">Заявок пока нет.</p>
+        </section>
+    </main>
+
+    <dialog class="pages-delete-dialog" id="form-delete-dialog">
+        <span aria-hidden="true">!</span><h2>Удалить?</h2><p><b id="form-delete-title"></b> будет удалено.</p>
+        <div><button class="pages-cancel-button" id="cancel-form-delete" type="button">Отмена</button><button class="pages-delete-button" id="confirm-form-delete" type="button">Удалить</button></div>
+    </dialog>
+    <div class="pages-toast" id="forms-toast" role="status" aria-live="polite" hidden></div>
+    <script src="./auth-session.js"></script>
+    <script src="./demo-shop-storage.js"></script>
+    <script src="./store-forms.js"></script>
+    <script src="./telegram-promo.js"></script>
+</body>
+</html>

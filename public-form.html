@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090b12">
+    <meta name="description" content="Форма заявки магазина игрового сервера.">
+    <title>Заявка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/public-store.css">
+    <link rel="stylesheet" href="./css/store-forms.css">
+</head>
+<body>
+    <header class="store-header">
+        <a class="store-brand" id="form-store-brand" href="./public-store.html"><span class="store-brand-mark" id="form-brand-mark">S</span><span id="form-store-name">Магазин сервера</span></a>
+        <nav class="store-nav" aria-label="Навигация магазина"><a id="form-home-link" href="./public-store.html">Витрина</a></nav>
+        <a class="cart-open-button page-shop-link" id="form-shop-link" href="./public-store.html">В магазин</a>
+    </header>
+    <main class="public-store-content standalone-page">
+        <a class="standalone-back-link" id="form-back-link" href="./public-store.html">← Назад в магазин</a>
+        <article class="standalone-page-card">
+            <p class="section-kicker" id="public-form-description">ЗАЯВКА</p>
+            <h1 id="public-form-title">Форма</h1>
+            <form id="public-form" novalidate hidden>
+                <div class="public-form-fields" id="public-form-fields"></div>
+                <p class="public-form-message" id="public-form-message" role="alert" hidden></p>
+                <button class="public-form-submit" id="public-form-submit" type="submit">Отправить</button>
+            </form>
+            <p class="public-form-message" id="public-form-error" hidden></p>
+        </article>
+    </main>
+    <script src="./public-form.js"></script>
+    <script src="./telegram-promo.js"></script>
+</body>
+</html>

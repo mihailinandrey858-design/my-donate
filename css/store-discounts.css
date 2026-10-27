@@ -1,0 +1,22 @@
+.discounts-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.discounts-title { display: flex; align-items: center; gap: 14px; }
+.discounts-title h1 { margin: 0; }
+.discounts-title h1 em { color: #2f9bff; font-style: normal; }
+.discounts-title p { margin: 4px 0 0; color: #8e90a0; }
+.discounts-title .pages-back-button { display: grid; place-items: center; text-decoration: none; color: inherit; }
+.discount-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+.discount-card { position: relative; padding: 22px 24px; background: #12131c; border: 1px solid #ffffff12; border-radius: 16px; }
+.discount-card h3 { margin: 0 0 10px; font-size: 20px; }
+.discount-card-meta { display: flex; flex-wrap: wrap; gap: 6px; color: #d8d9e2; font-size: 13px; }
+.discount-card-meta .percent { color: #2fe07a; }
+.discount-card-meta .state { color: #8e90a0; }
+.discount-card-actions { position: absolute; top: 22px; right: 20px; display: flex; gap: 10px; }
+.discount-card-actions button { color: #2f7bff; background: none; border: 0; cursor: pointer; font-size: 16px; }
+.discount-card-actions button[data-action="delete"] { color: #ff4d5e; }
+.discount-dates { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) {
+    .discounts-heading { flex-direction: column; align-items: flex-start; }
+    .discount-dates { grid-template-columns: 1fr; }
+}
+
+
