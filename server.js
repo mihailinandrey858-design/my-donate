@@ -13,7 +13,7 @@ try {
 }
 const databaseUrl = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL || "";
 const pool = databaseUrl
-    ? new (require("pg").Pool)({ connectionString: databaseUrl, max: 5, ssl: { rejectUnauthorized: true } })
+    ? new (require("pg").Pool)({ connectionString: databaseUrl, max: 5, ssl: process.env.DATABASE_SSL === "false" ? false : { rejectUnauthorized: true } })
     : null;
 const usersFile = process.env.SDONATE_USERS_FILE || path.join(root, "data", "users.json");
 const verificationsFile = process.env.SDONATE_VERIFICATIONS_FILE || path.join(root, "data", "verifications.json");
